@@ -41,65 +41,118 @@
 // 	return 4;
 // }
 
-interface Shape {
-	getArea(): number;
+// interface Shape {
+// 	getArea(): number;
+// }
+
+// class Circle implements Shape {
+// 	radius: number;
+
+// 	constructor(radius: number) {
+// 		this.radius = radius;
+// 	}
+
+// 	getArea() {
+// 		return this.radius * this.radius * Math.PI;
+// 	}
+// }
+
+// class Rectangle implements Shape {
+// 	width: number;
+// 	height: number;
+// 	constructor(width: number, height: number) {
+// 		this.width = width;
+// 		this.height = height;
+// 	}
+// 	getArea() {
+// 		return this.width * this.height;
+// 	}
+// }
+
+// const circle = new Circle(5);
+// const rectangle = new Rectangle(2, 5);
+
+// const shapes: Shape[] = [ circle, rectangle ];
+
+// shapes.forEach((shape) => {
+// 	console.log(shape.getArea());
+// });
+
+// // ?:있을수도 있고 없을 수도 있다
+// type Person = {
+// 	name: string;
+// 	age?: number;
+// };
+
+// type Developer = Person & {
+// 	skills: string[];
+// };
+
+// const person: Person = {
+// 	name: 'devrappers',
+// 	age: 23
+// };
+
+// const expert: Developer = {
+// 	name: '김개발',
+// 	skills: [ 'javascript', 'react', 'typescript' ]
+// };
+
+// type People = Person[];
+// const people: People = [ person, expert ];
+
+// type Color = 'red' | 'orange' | 'yellow';
+// const color: Color = 'orange';
+
+function merge<T1, T2>(a: T1, b: T2) {
+	return {
+		...a,
+		...b
+	};
 }
 
-class Circle implements Shape {
-	radius: number;
+const merged = merge({ foo: 1 }, { bar: 2, foobar: 3 });
 
-	constructor(radius: number) {
-		this.radius = radius;
+function wrap<T>(param: T) {
+	return {
+		param
+	};
+}
+
+const wrapped = wrap('aaa');
+
+type Items<T, V> = {
+	list: T[];
+	value: V;
+};
+
+const items: Items<string, string> = {
+	list: [ 'aa', 'bb' ],
+	value: 'aaa'
+};
+
+class Queue<T> {
+	list: T[] = [];
+
+	get length() {
+		return this.list.length;
 	}
 
-	getArea() {
-		return this.radius * this.radius * Math.PI;
+	enqueue(item: T) {
+		this.list.push(item);
+	}
+
+	dequeue() {
+		return this.list.shift();
 	}
 }
 
-class Rectangle implements Shape {
-	width: number;
-	height: number;
-	constructor(width: number, height: number) {
-		this.width = width;
-		this.height = height;
-	}
-	getArea() {
-		return this.width * this.height;
-	}
+const queue = new Queue<number>();
+queue.enqueue(0);
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+
+while (queue.length > 0) {
+	console.log(queue.dequeue());
 }
-
-const circle = new Circle(5);
-const rectangle = new Rectangle(2, 5);
-
-const shapes: Shape[] = [ circle, rectangle ];
-
-shapes.forEach((shape) => {
-	console.log(shape.getArea());
-});
-
-// ?:있을수도 있고 없을 수도 있다
-type Person = {
-	name: string;
-	age?: number;
-};
-
-type Developer = Person & {
-	skills: string[];
-};
-
-const person: Person = {
-	name: 'devrappers',
-	age: 23
-};
-
-const expert: Developer = {
-	name: '김개발',
-	skills: [ 'javascript', 'react', 'typescript' ]
-};
-
-type People = Person[];
-const people: People = [ person, expert ];
-
-type Color = 'red' | 'orange' | 'yellow';
-const color: Color = 'orange';
