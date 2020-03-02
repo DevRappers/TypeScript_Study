@@ -15,6 +15,12 @@
     // 주석제거
     "removeComments": true,
     // type을 정의하지 않으면 Any Type을 주는 Option
-    "noImplicitAny": true
+    // noImplicitAny": true
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.symbol"
+    ]
   }
 }
