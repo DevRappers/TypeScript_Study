@@ -1,0 +1,20 @@
+{
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "module": "es6",
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "es5",
+    // ts파일 볼 수 있도록
+    "sourceMap": true,
+    // 주석제거
+    "removeComments": true,
+    // type을 정의하지 않으면 Any Type을 주는 Option
+    "noImplicitAny": true
+  }
+}
