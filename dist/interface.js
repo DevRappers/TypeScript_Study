@@ -9,6 +9,13 @@ function tryTurnOn(tv) {
     tv.turnOn();
 }
 tryTurnOn(myTv);
+function ajaxSignup(data) {
+}
+ajaxSignup({
+    email: 'aaa@naver.com',
+    id: 'aaa',
+    password: '12345'
+});
 function createBoard() {
     var cells = [];
     for (var row = 0; row < 4; row++) {
